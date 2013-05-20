@@ -35,8 +35,10 @@ module.exports = function(grunt) {
       files: ['test/**/*.html']
     },
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint qunit'
+      scripts: {
+        files: 'src/**/*.js',
+        tasks: ['jshint', 'qunit']
+      }
     },
     uglify: {
       options: {
