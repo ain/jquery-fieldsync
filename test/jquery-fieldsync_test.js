@@ -22,36 +22,40 @@
       raises(block, [expected], [message])
   */
 
-  module('jQuery#awesome', {
+  module('jquery-fieldsync', {
     setup: function() {
-      this.elems = $('#qunit-fixture').children();
+      this.source_element = $('input[name="fieldsync_source"]');
+      this.target_element = $('input[name="fieldsync_target"]');
+      this.target_element.fieldsync(this.source_element);
     }
   });
 
-  test('is chainable', 1, function() {
-    // Not a bad test to run on collection methods.
-    strictEqual(this.elems.awesome(), this.elems, 'should be chaninable');
+  test('source has value', 1, function() {
+    strictEqual(this.source_element.val(), 'Value 1', 'should have "Value 1"');
   });
 
-  test('is awesome', 1, function() {
-    strictEqual(this.elems.awesome().text(), 'awesomeawesomeawesome', 'should be thoroughly awesome');
+  test('target has value', 1, function() {
+    strictEqual(this.target_element.val(), 'Value 1', 'should update to "Value 1"');
   });
 
-  module('jQuery.awesome');
-
-  test('is awesome', 1, function() {
-    strictEqual($.awesome(), 'awesome', 'should be thoroughly awesome');
+  test('target updates to source', 1, function() {
+    this.source_element.val('Value 12').trigger('keyup');
+    strictEqual(this.target_element.val(), 'Value 12', 'should update to "Value 12"');
   });
 
-  module(':awesome selector', {
-    setup: function() {
-      this.elems = $('#qunit-fixture').children();
-    }
+  test('target updates to source', 1, function() {
+    this.source_element.val('Value 13').trigger('keyup');
+    strictEqual(this.target_element.val(), 'Value 13', 'should update to "Value 13"');
   });
 
-  test('is awesome', 1, function() {
-    // Use deepEqual & .get() when comparing jQuery objects.
-    deepEqual(this.elems.filter(':awesome').get(), this.elems.last().get(), 'knows awesome when it sees it');
+  test('target changes', 1, function() {
+    this.target_element.val('Value 14').trigger('keyup');
+    strictEqual(this.target_element.val(), 'Value 14', 'should change to "Value 14"');
+  });
+
+  test('target does not update to source', 1, function() {
+    this.source_element.val('Value 15').trigger('keyup');
+    notStrictEqual(this.target_element.val(), 'Value 14', 'should remain at "Value 14"');
   });
 
 }(jQuery));
