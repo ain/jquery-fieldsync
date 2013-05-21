@@ -6,7 +6,7 @@ jQuery plugin for synchronising the values of two fields.
 Download the [production version][min] or the [development version][max].
 
 [min]: https://raw.github.com/ain/jquery-fieldsync/master/dist/jquery-fieldsync.min.js
-[max]: https://raw.github.com/ain/jquery-fieldsync/master/dist/jquery-fieldsync.js
+[max]: https://raw.github.com/ain/jquery-fieldsync/master/src/jquery-fieldsync.js
 
 In your web page:
 
