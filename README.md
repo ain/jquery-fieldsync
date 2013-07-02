@@ -20,6 +20,3 @@ jQuery(function($) {
 });
 </script>
 ```
-
-## Release History
-_(Nothing yet)_
