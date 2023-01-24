@@ -1,5 +1,8 @@
 # jQuery Fieldsync [![Build Status](https://travis-ci.org/ain/jquery-fieldsync.png?branch=master)](https://travis-ci.org/ain/jquery-fieldsync)
 
+> **Warning**
+> This library is no more maintained. 
+
 jQuery plugin for synchronising the values of two fields.
 
 ## Getting Started
